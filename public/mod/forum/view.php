@@ -87,7 +87,7 @@ if ($mode) {
     $displaymode = $saveddisplaymode;
 }
 
-if (get_user_preferences('forum_useexperimentalui', false)) {
+if (get_user_preferences('forum_useexperimentalui', get_config('core', 'defaultpreference_useexperimentalui') ?? false)) {
     if ($displaymode == FORUM_MODE_NESTED) {
         $displaymode = FORUM_MODE_NESTED_V2;
     }

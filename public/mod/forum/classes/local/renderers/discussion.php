@@ -291,10 +291,15 @@ class discussion {
      */
     private function get_display_mode_selector_html(int $displaymode, stdClass $user): string {
         $baseurl = $this->baseurl;
+        $useexperimentalui = get_user_preferences(
+            'forum_useexperimentalui',
+            get_config('core', 'defaultpreference_useexperimentalui') ?? false,
+            $user
+        );
         $select = new single_select(
             $baseurl,
             'mode',
-            forum_get_layout_modes(get_user_preferences('forum_useexperimentalui', false, $user)),
+            forum_get_layout_modes($useexperimentalui),
             $displaymode,
             null,
             'mode'

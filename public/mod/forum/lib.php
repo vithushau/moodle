@@ -2395,7 +2395,10 @@ function forum_get_discussion_subscription_icon_preloaders() {
  */
 function forum_print_mode_form($id, $mode, $forumtype='') {
     global $OUTPUT;
-    $useexperimentalui = get_user_preferences('forum_useexperimentalui', false);
+    $useexperimentalui = get_user_preferences(
+        'forum_useexperimentalui',
+        get_config('core', 'defaultpreference_useexperimentalui') ?? false
+    );
     if ($forumtype == 'single') {
         $select = new single_select(
             new moodle_url("/mod/forum/view.php",
